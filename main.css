@@ -39,6 +39,8 @@ li {
   align-items: center;
 }
 figure {
+  height: 90%;
+  width: 30%;
   text-align: center;
   margin-left: 1em;
 }
@@ -49,10 +51,6 @@ figure {
   overflow: hidden;
   text-overflow: ellipsis;
   margin-left: 0.5em;
-}
-figure {
-  height: 90%;
-  width: 30%;
 }
 #mainImage {
   height: 100%;
