@@ -3,9 +3,10 @@
   --selectedItemColor: rgb(34, 95, 200);
 }
 body {
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  font-size: 1.1em;
+  font-size: 1em;
   height: 100vh;
   overflow: hidden;
 }
