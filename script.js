@@ -4,9 +4,6 @@ import ItemList from "./ItemList.js";
 const itemList = new ItemList();
 const list = itemList.list;
 const elList = document.querySelector("#list");
-
-const truncateTitle = (title) => {};
-
 list.forEach((item, id) => {
   const elItem = document.createElement("li");
   elItem.setAttribute("index", id);
