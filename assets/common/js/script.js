@@ -69,8 +69,8 @@ const updateMainImage = (item) => {
   }
   item.classList.add("current");
 
-  let elMainImage = document.querySelector("#mainImage");
-  let elMainImageCaption = document.querySelector("#mainImageCaption");
+  const elMainImage = document.querySelector("#mainImage");
+  const elMainImageCaption = document.querySelector("#mainImageCaption");
   elMainImage.src = item.getAttribute("imgSrc");
   elMainImageCaption.textContent = item.getAttribute("title");
 };
