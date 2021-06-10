@@ -52,13 +52,13 @@ const updateMainImage = (prevId, index) => {
   let elMainImageCaption = document.querySelector("#mainImageCaption");
   elMainImage.src = list[index].previewImage;
   elMainImageCaption.textContent = list[index].title;
-  return index;
+  return Number(index);
 };
 
 elList.children[0].classList.add("current");
 let currentId = 0;
-
 updateMainImage(currentId, currentId);
+
 for (let item of elList.children) {
   const id = item.getAttribute("index");
   item.addEventListener("click", () => {
@@ -68,11 +68,11 @@ for (let item of elList.children) {
 
 window.addEventListener("keydown", (event) => {
   if (event.key === "ArrowDown") {
-    if (currentId + 1 < elList.children.length) {
+    if (currentId < elList.children.length - 1) {
       currentId = updateMainImage(currentId, currentId + 1);
     }
   } else if (event.key === "ArrowUp") {
-    if (currentId - 1 >= 0) {
+    if (currentId >= 1) {
       currentId = updateMainImage(currentId, currentId - 1);
     }
   }

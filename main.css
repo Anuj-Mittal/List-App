@@ -1,5 +1,6 @@
 :root {
   --borderRadius: 0.3em;
+  --selectedItemColor: rgb(34, 95, 200);
 }
 body {
   margin: 0;
@@ -13,11 +14,20 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 ul {
-  /* flex-basis: 0;
-  flex-grow: 1; */
   list-style-type: none;
+}
+
+.bullet-img {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  margin-left: 0.5em;
+  object-fit: cover;
+  border-radius: var(--borderRadius);
+  flex-shrink: 0;
 }
 
 li {
@@ -30,45 +40,31 @@ li {
 }
 figure {
   text-align: center;
-  /* flex-basis: 0;
-  flex-grow: 1.5; */
-  /* margin : 2em; */
   margin-left: 1em;
-}
-.bullet-img {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  margin-left: 0.5em;
-  object-fit: cover;
-  border-radius: var(--borderRadius);
-  flex-shrink: 0;
 }
 .list-item-label {
   text-overflow: ellipsis;
-  /* width: 270px; */
   margin: 20px;
-  /* list-style-position: inside; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-left: 0.5em;
 }
-.main-image {
+figure {
+  height: 90%;
+  width: 30%;
+}
+#mainImage {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: var(--borderRadius);
 }
-figure {
-  height: 90%;
-  width: 30%;
-}
 .current {
-  background: rgb(34, 95, 200);
+  background: var(--selectedItemColor);
   color: white;
 }
 #mainImageCaption {
-  color: rgb(84, 84, 84);
+  color: rgb(99, 99, 99);
   font-size: 1.3em;
 }
