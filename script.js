@@ -1,9 +1,12 @@
-import Constants from "./constants.js";
+import ItemList from "./ItemList.js";
 
-// el prefix is used for DOM element names.
-const constants = new Constants();
-const list = constants.list;
+// 'el' prefix is used for DOM element names.
+const itemList = new ItemList();
+const list = itemList.list;
 const elList = document.querySelector("#list");
+
+const truncateTitle = (title) => {};
+
 list.forEach((item, id) => {
   const elItem = document.createElement("li");
   elItem.setAttribute("index", id);
@@ -50,10 +53,12 @@ for (let item of elList.children) {
 window.addEventListener("keydown", (event) => {
   // Event listeners for keyboard navigation.
   if (event.key === "ArrowDown") {
+    event.preventDefault();
     if (currentId < elList.children.length - 1) {
       currentId = updateMainImage(currentId, currentId + 1);
     }
   } else if (event.key === "ArrowUp") {
+    event.preventDefault();
     if (currentId >= 1) {
       currentId = updateMainImage(currentId, currentId - 1);
     }
