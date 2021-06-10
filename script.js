@@ -1,5 +1,6 @@
 import Constants from "./constants.js";
 
+// el prefix is used for DOM element names.
 const constants = new Constants();
 const list = constants.list;
 const elList = document.querySelector("#list");
