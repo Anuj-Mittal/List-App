@@ -59,9 +59,11 @@ figure {
 }
 .list-item-title {
   margin: 20px;
-  white-space: nowrap;
-  overflow: hidden;
   margin-left: 0.5em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* number of lines to show */
 }
 #mainImage {
   height: 95%;
