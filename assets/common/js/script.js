@@ -9,7 +9,10 @@ const truncateTitle = (elTitle) => {
   let maxTitleLength = elTitle.textContent.length; //Max Title length Including ellipsis
   const title = elTitle.textContent;
   // Keep reducing the maximum allowed length until the title fits
-  while (elTitle.scrollWidth > elTitle.clientWidth) {
+  while (
+    elTitle.scrollWidth > elTitle.clientWidth ||
+    elTitle.scrollHeight > elTitle.clientHeight
+  ) {
     maxTitleLength--;
 
     const newTitle =
