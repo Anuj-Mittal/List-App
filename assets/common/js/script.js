@@ -14,7 +14,10 @@ const truncateTitle = (elTitle) => {
     elTitle.scrollHeight > elTitle.clientHeight
   ) {
     maxTitleLength--;
-
+    if (maxTitleLength < 3) {
+      elTitle.innerText = "...";
+      break;
+    }
     const newTitle =
       // First Few characters + ellipisis (...) + Last few characters
       title.substr(0, Math.floor((maxTitleLength - 3) / 2)) +
