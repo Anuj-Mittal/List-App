@@ -61,7 +61,7 @@ figure {
   margin: 20px;
   margin-left: 0.5em;
   overflow: hidden;
-  word-break: break-word;
+  word-break: break-all;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3; /* number of lines to show */
