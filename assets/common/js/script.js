@@ -8,6 +8,8 @@ import ITEM_LIST from "./itemList.js";
 const truncateTitle = (elTitle) => {
   let maxTitleLength = elTitle.textContent.length; //Max Title length Including ellipsis
   const title = elTitle.textContent;
+  // Ellipsis should not have any letter spacing.
+  const ellipsis = `<span style='letter-spacing : normal;'>...</span>`;
   // Keep reducing the maximum allowed length until the title fits
   while (
     elTitle.scrollWidth > elTitle.clientWidth ||
@@ -15,17 +17,18 @@ const truncateTitle = (elTitle) => {
   ) {
     maxTitleLength--;
     if (maxTitleLength < 3) {
-      elTitle.innerText = "...";
+      elTitle.innerHTML = `${ellipsis}`;
       break;
     }
-    const newTitle =
-      // First Few characters + ellipisis (...) + Last few characters
-      title.substr(0, Math.floor((maxTitleLength - 3) / 2)) +
-      "..." +
-      title.substr(
-        -(maxTitleLength - Math.floor((maxTitleLength - 3) / 2) - 3)
-      );
-    elTitle.innerText = newTitle;
+    // First Few characters + ellipisis (...) + Last few characters
+    // Truncated title of length maxTitleLength
+    const newTitle = `${title.substr(
+      0,
+      Math.floor((maxTitleLength - 3) / 2)
+    )} ${ellipsis} ${title.substr(
+      -(maxTitleLength - Math.floor((maxTitleLength - 3) / 2) - 3)
+    )}`;
+    elTitle.innerHTML = newTitle;
   }
 };
 /**
