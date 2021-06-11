@@ -6,17 +6,20 @@ import ITEM_LIST from "./itemList.js";
  * @param {<span> Object} elTitle - The <span> Object of title string
  */
 const truncateTitle = (elTitle) => {
-  let maxTitleLength = elTitle.textContent.length;
+  let maxTitleLength = elTitle.textContent.length; //Max Title lenght Including ellipsis
   const title = elTitle.textContent;
   // Keep reducing the maximum allowed length until the title fits
   while (elTitle.scrollWidth > elTitle.clientWidth) {
     maxTitleLength--;
-    const temp =
+
+    const newTitle =
       // First Few characters + ellipisis (...) + Last few characters
-      title.substr(0, Math.floor(maxTitleLength / 2)) +
+      title.substr(0, Math.floor((maxTitleLength - 3) / 2)) +
       "..." +
-      title.substr(-(maxTitleLength - Math.floor(maxTitleLength / 2) - 3));
-    elTitle.innerText = temp;
+      title.substr(
+        -(maxTitleLength - Math.floor((maxTitleLength - 3) / 2) - 3)
+      );
+    elTitle.innerText = newTitle;
   }
 };
 /**
