@@ -1,23 +1,22 @@
 import ITEM_LIST from "./itemList.js";
 
-const MAX_TITLE_LENGTH = 31;
 /**
- * Truncates the string to a maximum of MAX_TITLE_LENGTH.
+ * Truncates the string if it overflows.
  * Inserts '...' in between the string.
- * Guarantees that the output string doesnt exceed MAX_TITLE_LENGTH.
- * @param {string} title - The string to be truncated
- * @returns {string} - Truncated string
+ * @param {<span> Object} elTitle - The <span> Object of title string
  */
-const truncateTitle = (title) => {
-  if (title.length <= MAX_TITLE_LENGTH) {
-    return title;
-  } else {
-    return (
+const truncateTitle = (elTitle) => {
+  let maxTitleLength = elTitle.textContent.length;
+  const title = elTitle.textContent;
+  // Keep reducing the maximum allowed length until the title fits
+  while (elTitle.scrollWidth > elTitle.clientWidth) {
+    maxTitleLength--;
+    const temp =
       // First Few characters + ellipisis (...) + Last few characters
-      title.substr(0, Math.floor(MAX_TITLE_LENGTH / 2)) +
+      title.substr(0, Math.floor(maxTitleLength / 2)) +
       "..." +
-      title.substr(-(MAX_TITLE_LENGTH - Math.floor(MAX_TITLE_LENGTH / 2) - 3))
-    );
+      title.substr(-(maxTitleLength - Math.floor(maxTitleLength / 2) - 3));
+    elTitle.innerText = temp;
   }
 };
 /**
@@ -31,27 +30,31 @@ const createElementList = (list) => {
   // <ul>
   const elList = document.querySelector("#list");
 
-  list.forEach((item, id) => {
+  list.forEach((data, id) => {
     // creating <li>
     const elItem = document.createElement("li");
     // Storing img source and title in <li> attributes.
-    elItem.setAttribute("imgSrc", item.previewImage);
-    elItem.setAttribute("title", item.title);
+    elItem.setAttribute("imgSrc", data.previewImage);
+    elItem.setAttribute("title", data.title);
 
     // Bullet image for item
     const elBulletImg = document.createElement("img");
-    elBulletImg.src = item.previewImage;
+    elBulletImg.src = data.previewImage;
     elBulletImg.classList.add("bullet-img");
 
     // Title for list item
     const elTitle = document.createElement("span");
     elTitle.classList.add("list-item-title");
-    elTitle.textContent = truncateTitle(item.title);
+    elTitle.textContent = data.title;
 
     elItem.append(elBulletImg, elTitle);
 
     // Adding <li> to the <ul>
     elList.appendChild(elItem);
+
+    // Title should be truncated after adding the list items to the DOM, as it
+    // requires calculated styles computations..
+    truncateTitle(elTitle);
   });
   return elList;
 };
