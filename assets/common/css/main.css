@@ -62,9 +62,7 @@ figure {
   margin-left: 0.5em;
   overflow: hidden;
   word-break: break-all;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /* number of lines to show */
+  line-height: 1.2; /* Default Line Height - 1.2 times the current font-size*/
 }
 #mainImage {
   height: 95%;
