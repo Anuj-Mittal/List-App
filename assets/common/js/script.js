@@ -1,5 +1,7 @@
 import ITEM_LIST from "./itemList.js";
 
+const MAX_TITLE_LINES = 3; // Maximum number of lines allowed for title
+
 /**
  * Truncates the string if it overflows.
  * Inserts '...' in between the string.
@@ -58,7 +60,6 @@ const createElementList = (list) => {
     const elTitle = document.createElement("span");
     elTitle.classList.add("list-item-title");
     elTitle.textContent = data.title;
-
     elItem.append(elBulletImg, elTitle);
 
     // Adding <li> to the <ul>
@@ -66,6 +67,12 @@ const createElementList = (list) => {
 
     // Title should be truncated after adding the list items to the DOM, as it
     // requires calculated styles computations..
+    // Setting the maximum height to be MAX_TITLE_LINES * currentLineHeight
+    const currentLineHeight = window.getComputedStyle(elTitle).lineHeight;
+    elTitle.setAttribute(
+      "style",
+      `max-height: ${MAX_TITLE_LINES * parseInt(currentLineHeight, 10)}px`
+    );
     truncateTitle(elTitle);
   });
   return elList;
